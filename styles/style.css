@@ -1,0 +1,110 @@
+:root {
+  --item-count: 6;
+  --bar-size: 1.5em;
+  --gap-size: 0.5em;
+  --burger-size: calc(
+    3 * var(--bar-size)
+  + 4 * var(--gap-size)
+  );
+  --bar-width: calc(
+    var(--burger-size)
+  - 2 * var(--gap-size)
+  );
+  --item-font: 9vmin;
+  --item-padding: calc(0.25 * var(--item-font));
+  --item-height: var(--item-font);
+  --item-size: calc(
+    var(--item-height)
+  + var(--item-padding) * 2
+  );
+  --menu-height: calc(
+    var(--burger-size)
+  + calc(var(--item-size) * var(--item-count))
+  );
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 10vmin;
+}
+
+div.collapse {
+  position: absolute;
+  display: inline-block;
+  width: var(--burger-size);
+  height: var(--burger-size);
+  background-color: #333;
+  overflow: hidden;
+  border: 0.1em #fff3 outset;
+}
+
+div.burger {
+  width: var(--burger-size);
+  height: var(--burger-size);
+  padding-top: var(--gap-size);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+div.bar {
+  height: var(--bar-size);
+  width: var(--bar-width);
+  background-color: #fff6;
+  margin: var(--gap-size);
+  border-radius: 10em;
+}
+
+div.bar:first-child {
+  margin-top: 0;
+}
+
+div.collapse:hover div.bar {
+  background-color: #fff;
+}
+
+div.collapse ul {
+  height: 0;
+  width: auto;
+  overflow: hidden;
+}
+
+/* div.collapse, */
+div.collapse:hover {
+  width: auto;
+  height: auto;
+  height: var(--menu-height);
+  transition: height 200ms;
+  border-color: #fff9
+}
+
+/* div.collapse ul, */
+div.collapse:hover ul {
+  height: auto;
+}
+
+ul {
+  font-size: var(--item-font);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: var(--item-padding) 1em;
+  height: var(--item-height);
+}
+
+li:hover {
+  background-color: #ccc;
+  color: #000;
+}
